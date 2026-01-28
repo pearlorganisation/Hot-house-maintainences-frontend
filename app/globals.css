@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+.newshadow {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+@font-face {
+  font-family: "Questrial-Regular";
+  src: local("Questrial-Regular"),
+    url("/Questrial-Regular.ttf") format("opentype");
+  font-weight: normal;
+}
+
+* {
+  font-family: "Questrial-Regular", sans-serif;
+}
+
+.info {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 300px;
+  background-color: rgb(182, 58, 58);
+
+  animation: cover 0.1s 0;
+}
+
+@keyframes cover {
+  0% {
+    top: 250px;
+  }
+  25% {
+    top: 200px;
+  }
+  50% {
+    top: 150px;
+  }
+  75% {
+    top: 100px;
+  }
+  100% {
+    top: 50px;
+  }
+}
+
+.no-scroll {
+  overflow: hidden !important;
+}
+
