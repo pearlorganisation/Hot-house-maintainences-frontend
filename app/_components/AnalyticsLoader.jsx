@@ -17,7 +17,7 @@ export default function AnalyticsScripts() {
   return (
     <>
       {/* Google Tag Manager */}
-      <Script id="gtm" strategy="afterInteractive">
+      {/* <Script id="gtm" strategy="afterInteractive">
         {`
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -25,20 +25,20 @@ export default function AnalyticsScripts() {
           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','GTM-K9VVFVZL');
         `}
-      </Script>
+      </Script> */}
 
       {/* Google Analytics */}
-      <Script id="ga" strategy="afterInteractive">
+      {/* <Script id="ga" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-7NN5GJS7SP');
         `}
-      </Script>
+      </Script> */}
 
       {/* Meta Pixel */}
-      <Script id="meta-pixel" strategy="afterInteractive">
+      {/* <Script id="meta-pixel" strategy="afterInteractive">
         {`
           !function(f,b,e,v,n,t,s)
           {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -51,7 +51,21 @@ export default function AnalyticsScripts() {
           fbq('init', '406823858532963');
           fbq('track', 'PageView');
         `}
-      </Script>
+      </Script> */}
+
+      <Script
+  src="https://www.googletagmanager.com/gtag/js?id=G-L2LD88SFKL"
+  strategy="afterInteractive"
+/>
+
+<Script id="gtag-init" strategy="afterInteractive">
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-L2LD88SFKL');
+  `}
+</Script>
     </>
   );
 }
