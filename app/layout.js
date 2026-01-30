@@ -7,6 +7,7 @@ import { Toaster } from "sonner";
 import Popup from "./_components/Popup/Popup";
 // import RouteChangeTracker from "./_components/RouteChangeTracker";
 import AnalyticsScripts from "./_components/AnalyticsLoader";
+import Script from "next/script";
 
 
 export const metadata = {
@@ -16,7 +17,8 @@ export const metadata = {
     icon: "/favicon.jpg",
   },
   verification: {
-    google: "KNX-3vWjShPJyzrqVlhnyfiZYNUxUOWcaupO2aREIcE",
+        google: "wB-BRkSJ7Kv_piJ-VOoqs5_8wKCbrUtSvW3e6mBhY-o",
+    // google: "KNX-3vWjShPJyzrqVlhnyfiZYNUxUOWcaupO2aREIcE",
     microsoft: "23983C217832B5C4AAC786882981CDA6",
     pinterest: "0251c9ad8f0e5ddccd4f306b6f6fc871",
     facebook: "sbeb7h7pbwfwnhprsjn3gh82x94191",
@@ -40,6 +42,7 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
+
         {/* Adding noscript using dangerouslySetInnerHTML */}
         <noscript
           dangerouslySetInnerHTML={{
@@ -49,7 +52,22 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
+       <Script
+  src="https://www.googletagmanager.com/gtag/js?id=G-L2LD88SFKL"
+  strategy="afterInteractive"
+/>
 
+<Script id="gtag-init" strategy="afterInteractive">
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-L2LD88SFKL');
+  `}
+</Script>
+
+
+      
 
         <StoreProvider>
           <Header />
