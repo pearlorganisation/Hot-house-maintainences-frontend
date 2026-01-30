@@ -18,6 +18,7 @@ export const metadata = {
   },
   verification: {
         google: "wB-BRkSJ7Kv_piJ-VOoqs5_8wKCbrUtSvW3e6mBhY-o",
+          metadataBase: new URL("https://hothousenorthwood.co.uk/"),
     // google: "KNX-3vWjShPJyzrqVlhnyfiZYNUxUOWcaupO2aREIcE",
     microsoft: "23983C217832B5C4AAC786882981CDA6",
     pinterest: "0251c9ad8f0e5ddccd4f306b6f6fc871",
