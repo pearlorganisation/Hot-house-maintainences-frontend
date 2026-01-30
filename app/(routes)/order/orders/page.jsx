@@ -40,7 +40,11 @@ const page = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+  defaultValues: {
+    paymentMethode: "Online Payment",
+  },
+});
 
 
 
