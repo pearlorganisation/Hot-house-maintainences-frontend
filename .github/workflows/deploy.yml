@@ -1,0 +1,49 @@
+name: Deploy Frontend to VPS
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to VPS via SSH
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            set -e
+
+            echo "🚀 Starting frontend deploy..."
+
+            cd /home/xplorevo.com/public_html/xplorevo-frontend
+            git pull origin master
+
+            npm ci
+            npm run build
+
+            echo "🐳 Docker deployment..."
+
+            cd /home/ubuntu/Hot-house-maintainences-frontend
+
+            docker stop fronted1 || true
+            docker rm fronted1 || true
+            docker rmi fronted1 || true
+
+            docker build --pull -t fronted1 .
+
+            docker run -d \
+              --restart unless-stopped \
+              -p 5000:5000 \
+              --name fronted1 \
+              fronted1
+
+            echo "✅ Frontend deployed successfully!"
