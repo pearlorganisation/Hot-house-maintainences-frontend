@@ -97,7 +97,7 @@ const Footer = () => {
             <div className="md:flex gap-2 items-center justify-between max-w-[300px] ">
               <div className="flex flex-col gap-2 justify-between items-center md:items-start">
                 <h3 className="font-bold text-lg">SOCIAL LINKS</h3>
-                <div className="flex gap-2">
+                <div className="flex gap-4">
                   <p className="hover:text-yellow-500 text-sm cursor-pointer">
                     {" "}
                     <a href="https://www.instagram.com/hothousepizzanorthwood" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-500">
@@ -191,13 +191,25 @@ const Footer = () => {
               <span className="text-center md:text-left w-full max-w-full">Hothousenorthwood@gmail.com</span>
 
             </p>
-            <p className="flex gap-2 justify-between">
+            {/* <p className="flex gap-2 justify-between">
               <span className="w-[25px]">
                 <FaPhone className="mr-2" size={20} />
               </span>
               <span className="text-center md:text-left w-full max-w-full">  Contact Us : 01923510520</span>
 
-            </p>
+            </p> */}
+            <a
+  href="tel:01923510520"
+  className="flex gap-2 justify-between cursor-pointer"
+>
+  <span className="w-[25px]">
+    <FaPhone className="mr-2" size={20} />
+  </span>
+
+  <span className="text-center md:text-left w-full max-w-full">
+    Contact Us : 01923510520
+  </span>
+</a>
 
 
           </div>
