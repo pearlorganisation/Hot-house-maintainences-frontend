@@ -1,4 +1,4 @@
-name: Deploy Frontend to VPS
+name: Deploy Frontend to VPS (Password SSH)
 
 on:
   push:
@@ -13,37 +13,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Deploy to VPS via SSH
+      - name: Deploy via SSH (password)
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          password: ${{ secrets.SSH_PASSWORD }}
           script: |
             set -e
-
             echo "🚀 Starting frontend deploy..."
-
             cd /home/ubuntu/Hot-house-maintainences-frontend
             git pull origin master
-
             npm ci
             npm run build
-
             echo "🐳 Docker deployment..."
-
-            cd /home/ubuntu/Hot-house-maintainences-frontend
-
             docker stop fronted1 || true
             docker rm fronted1 || true
             docker rmi fronted1 || true
-
             docker build --pull -t fronted1 .
-
-            docker run -d \
-              --restart unless-stopped \
-              -p 5000:5000 \
-              --name fronted1 \
-              fronted1
-
+            docker run -d --restart unless-stopped -p 5000:5000 --name fronted1 fronted1
             echo "✅ Frontend deployed successfully!"
