@@ -24,7 +24,7 @@ jobs:
 
             echo "🚀 Starting frontend deploy..."
 
-            cd /home/xplorevo.com/public_html/xplorevo-frontend
+            cd /home/ubuntu/Hot-house-maintainences-frontend
             git pull origin master
 
             npm ci
